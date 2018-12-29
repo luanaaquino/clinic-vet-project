@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Veterinary Clinics Catalogue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+</head>
+
+<body>
+    <nav id="nav-header">
+        <div class="nav-wrapper">
+			<form id="nav-header-search" class="hide">
+				<div class="input-field">
+					<input id="search" type="search" placeholder="Press enter to search." required>
+					<label class="label-icon" for="search"><i class="material-icons">search</i></label>
+					<i id="search-icon-close" class="material-icons">close</i>
+				</div>
+			</form>
+			<div id="nav-header-info">
+         		<a href="index.html" class="brand-logo">Veterinary Clinics Catalogue</a>
+         		<i id="search-icon-open" class="material-icons right hide-on-med-and-down">search</i>
+         	</div>
+        </div>
+     </nav>
+     <div class= "container">
+         <div class="row" id="clinics-data"></div>
+    </div>
+</body>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/underscore-min.js"></script>
+<script src="js/backbone-min.js"></script>
+<script src="js/materialize.min.js"></script>
+<script type="text/template" id="template-card">
+<% _.each(clinics, function (item) { %>
+    <div class="col s6 m4">
+        <div class="card">           
+            <div class="card-image">
+                <img src="<%= item.get('image') %>">
+                    <a class="btn-floating halfway-fab waves-effect waves-light green more-info">
+                        <input type="hidden" class="id-card" value="<%= item.get('id') %>">
+                        <i class="material-icons">add</i>
+                    </a>
+            </div>
+            <div class="card-content">
+                <span class="card-title" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" title="<%= item.get('name') %>"><%= item.get('name') %></span>
+            </div>
+        </div>
+    </div>
+<% }) %>
+</script>
+<script type="text/template" id="clinic-details">
+<% _.each(clinics, function (item) { %>
+    <br>
+    <div class = "details" style="text-align:justify"><h5><%= item.get('name') %></h5>
+        <br>
+        <p><b>Suffix:</b> <%= item.get('suffix') %></p>
+        <p><b>Phrase Descriptor:</b> <%= item.get('phraseDescriptor') %></p>
+        <p><b>Text:</b> <%= item.get('text') %></p>
+        <p><b>Street name:</b> <%= item.get('streetName') %></p>
+        <p><b>Street address:</b> <%= item.get('streetAddress') %></p>
+        <p><b>Latitude:</b> <%= item.get('latitude') %></p>
+        <p><b>Longitude:</b> <%= item.get('longitude') %></p>
+        <p><b>City:</b> <%= item.get('city') %></p>
+        <p><b>State:</b> <%= item.get('state') %></p>
+        <p><b>County:</b> <%= item.get('county') %></p>
+        <p><b>Phone:</b> <%= item.get('phone') %></p>
+        <p><b>Email:</b> <%= item.get('email') %></p>
+        <p><b>Site:</b> <%= item.get('site') %></p>
+    </div>
+<% }) %>
+<br>
+<div class = "button">
+    <a class="waves-effect waves-light btn green">back to home</a>
+</div>
+</script>
+<script src="js/main.js"></script>
+</html>
