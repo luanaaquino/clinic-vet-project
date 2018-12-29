@@ -1,2 +1,2 @@
-# js_test_b
+# clinic-vet-project
 Javascript using backbone js
